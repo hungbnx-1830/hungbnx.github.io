@@ -124,85 +124,116 @@
           </ol>
           <div class="main-content container-fluid">
             <div class="row">
-              <div class="col-lg-6">
-                <div class="card">
-                  <div class="card__header">Basic List<span class="card-subtitle">Drag &amp; drop hierarchical list with mouse and touch compatibility</span></div>
-                  <div class="card__body">
-                    <div class="dd" id="list1">
+              <menu class="dd-menu" id="nestable-menu">
+                <button type="button" data-action="expand-all">Expand All</button>
+                <button type="button" data-action="collapse-all">Collapse All</button>
+              </menu>
+              <div class="cf dd-rows">
+                <div class="dd" id="nestable">
+                  <ol class="dd-list">
+                    <li class="dd-item" data-id="1">
+                      <div class="dd-handle">Item 1</div>
+                    </li>
+                    <li class="dd-item" data-id="2">
+                      <div class="dd-handle">Item 2</div>
                       <ol class="dd-list">
-                        <li class="dd-item" data-id="1">
-                          <div class="dd-handle">Item 1</div>
-                        </li>
-                        <li class="dd-item" data-id="2">
-                          <div class="dd-handle">Item 2</div>
-                        </li>
                         <li class="dd-item" data-id="3">
-                          <button data-action="collapse" type="button">Collapse</button>
-                          <button data-action="expand" type="button" style="display: none;">Expand</button>
                           <div class="dd-handle">Item 3</div>
+                        </li>
+                        <li class="dd-item" data-id="4">
+                          <div class="dd-handle">Item 4</div>
+                        </li>
+                        <li class="dd-item" data-id="5">
+                          <div class="dd-handle">Item 5</div>
                           <ol class="dd-list">
-                            <li class="dd-item" data-id="4">
-                              <div class="dd-handle">Item 4</div>
+                            <li class="dd-item" data-id="6">
+                              <div class="dd-handle">Item 6</div>
                             </li>
-                            <li class="dd-item" data-id="5">
-                              <div class="dd-handle">Item 5</div>
+                            <li class="dd-item" data-id="7">
+                              <div class="dd-handle">Item 7</div>
+                            </li>
+                            <li class="dd-item" data-id="8">
+                              <div class="dd-handle">Item 8</div>
                             </li>
                           </ol>
                         </li>
+                        <li class="dd-item" data-id="9">
+                          <div class="dd-handle">Item 9</div>
+                        </li>
+                        <li class="dd-item" data-id="10">
+                          <div class="dd-handle">Item 10</div>
+                        </li>
                       </ol>
-                    </div>
-                    <div class="mt-6">
-                      <h4>Serialized Output:</h4>
-                      <pre></pre>
-                    </div>
-                  </div>
+                    </li>
+                    <li class="dd-item" data-id="11">
+                      <div class="dd-handle">Item 11</div>
+                    </li>
+                    <li class="dd-item" data-id="12">
+                      <div class="dd-handle">Item 12</div>
+                    </li>
+                  </ol>
+                </div>
+                <div class="dd dd--black" id="nestable2">
+                  <ol class="dd-list">
+                    <li class="dd-item" data-id="13">
+                      <div class="dd-handle">Item 13</div>
+                    </li>
+                    <li class="dd-item" data-id="14">
+                      <div class="dd-handle">Item 14</div>
+                    </li>
+                    <li class="dd-item" data-id="15">
+                      <div class="dd-handle">Item 15</div>
+                      <ol class="dd-list">
+                        <li class="dd-item" data-id="16">
+                          <div class="dd-handle">Item 16</div>
+                        </li>
+                        <li class="dd-item" data-id="17">
+                          <div class="dd-handle">Item 17</div>
+                        </li>
+                        <li class="dd-item" data-id="18">
+                          <div class="dd-handle">Item 18</div>
+                        </li>
+                      </ol>
+                    </li>
+                  </ol>
                 </div>
               </div>
-              <div class="col-lg-6">
-                <div class="card">
-                  <div class="card__header">Draggable Handles<span class="card-subtitle">Drag &amp; drop hierarchical list with mouse and touch compatibility</span></div>
-                  <div class="card__body">
-                    <div class="dd" id="list2">
+              <div class="cf dd-rows">
+                <p><strong>Serialised Output (per list)</strong></p>
+                <textarea class="dd-output" id="nestable-output"></textarea>
+                <textarea class="dd-output" id="nestable2-output"></textarea>
+                <p>&nbsp;</p>
+                <p><strong>Draggable Handles</strong></p>
+                <p>If you&apos;re clever with your CSS and markup this can be achieved without any JavaScript changes.</p>
+                <div class="dd dd--drag" id="nestable3">
+                  <ol class="dd-list">
+                    <li class="dd-item dd-item" data-id="13">
+                      <div class="dd-handle">Drag</div>
+                      <div class="dd-content">Item 13</div>
+                    </li>
+                    <li class="dd-item dd-item" data-id="14">
+                      <div class="dd-handle">Drag</div>
+                      <div class="dd-content">Item 14</div>
+                    </li>
+                    <li class="dd-item dd-item" data-id="15">
+                      <div class="dd-handle">Drag</div>
+                      <div class="dd-content">Item 15</div>
                       <ol class="dd-list">
-                        <li class="dd-item dd3-item" data-id="13">
-                          <button data-action="collapse" type="button">Collapse</button>
-                          <button data-action="expand" type="button" style="display: none;">Expand</button>
-                          <div class="dd-handle dd3-handle"></div>
-                          <div class="dd3-content">Item 13</div>
-                          <ol class="dd-list">
-                            <li class="dd-item dd3-item" data-id="14">
-                              <div class="dd-handle dd3-handle"></div>
-                              <div class="dd3-content">Item 14</div>
-                            </li>
-                            <li class="dd-item dd3-item" data-id="15">
-                              <button data-action="collapse" type="button">Collapse</button>
-                              <button data-action="expand" type="button" style="display: none;">Expand</button>
-                              <div class="dd-handle dd3-handle"></div>
-                              <div class="dd3-content">Item 15</div>
-                              <ol class="dd-list">
-                                <li class="dd-item dd3-item" data-id="16">
-                                  <div class="dd-handle dd3-handle"></div>
-                                  <div class="dd3-content">Item 16</div>
-                                </li>
-                                <li class="dd-item dd3-item" data-id="17">
-                                  <div class="dd-handle dd3-handle"></div>
-                                  <div class="dd3-content">Item 17</div>
-                                </li>
-                                <li class="dd-item dd3-item" data-id="18">
-                                  <div class="dd-handle dd3-handle"></div>
-                                  <div class="dd3-content">Item 18</div>
-                                </li>
-                              </ol>
-                            </li>
-                          </ol>
+                        <li class="dd-item dd-item" data-id="16">
+                          <div class="dd-handle">Drag</div>
+                          <div class="dd-content">Item 16</div>
+                        </li>
+                        <li class="dd-item dd-item" data-id="17">
+                          <div class="dd-handle">Drag</div>
+                          <div class="dd-content">Item 17</div>
+                        </li>
+                        <li class="dd-item dd-item" data-id="18">
+                          <div class="dd-handle">Drag</div>
+                          <div class="dd-content">Item 18</div>
                         </li>
                       </ol>
-                    </div>
-                    <div class="mt-6">
-                      <h4>Serialized Output:</h4>
-                      <pre></pre>
-                    </div>
-                  </div>
+                    </li>
+                  </ol>
                 </div>
               </div>
             </div>
@@ -213,7 +244,7 @@
   </body>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script type="text/javascript" src="js/Charts/Chart.min.js"></script>
+  <script type="text/javascript" src="js/jquery.niftymodals.js"></script>
   <script type="text/javascript" src="js/jquery.nestable.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
-  <script type="text/javascript" src="js/jquery.niftymodals.js"></script>
 </html>

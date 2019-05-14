@@ -13936,7 +13936,7 @@ p {
   margin-bottom: 0;
   border-bottom: 1px solid #e6e6e6;
   padding: 0;
-  z-index: 2; }
+  z-index: 99; }
   .top-header .page-title {
     flex: 1 1 auto;
     color: #5481e6;
@@ -13946,6 +13946,8 @@ p {
     float: left;
     text-align: center;
     text-transform: uppercase; }
+    .top-header .page-title a:hover {
+      text-decoration: none; }
 
 .back-to-top {
   position: fixed;
@@ -13954,8 +13956,9 @@ p {
   right: 50px;
   width: 50px;
   height: 50px;
-  background: url(../images/back-to-top.svg);
-  background-size: cover; }
+  background: url(../images/back-to-top.svg) #fff;
+  background-size: cover;
+  border-radius: 50%; }
 
 .sidebar--left {
   background-color: #f5f5f5;
@@ -14024,6 +14027,8 @@ p {
     overflow: hidden;
     white-space: nowrap;
     position: relative; }
+    .sidebar-item__label:hover {
+      text-decoration: none; }
   .sidebar-item__accordion:before {
     content: '';
     display: inline-block;
@@ -14043,8 +14048,7 @@ p {
   list-style: none;
   line-height: 20px;
   border-top: 1px solid #e6e6e6;
-  border-bottom: 1px solid #e6e6e6;
-  transition: all 1s ease; }
+  border-bottom: 1px solid #e6e6e6; }
   .sidebar-list__link {
     padding: 8px 15px 8px 49px;
     color: #696969;
@@ -14052,9 +14056,13 @@ p {
     display: block;
     text-overflow: ellipsis;
     overflow: hidden;
-    white-space: nowrap; }
+    white-space: nowrap;
+    text-decoration: none; }
+    .sidebar-list__link:hover {
+      text-decoration: none; }
     .sidebar-list__link--active {
-      color: #5481e6; }
+      color: #5481e6;
+      text-decoration: none; }
 
 .sidebar .is-clicked {
   display: block; }
@@ -14609,6 +14617,12 @@ p {
 .md-open {
   overflow: hidden; }
 
+.close.md-close {
+  margin: 20px;
+  color: #fff;
+  opacity: 1;
+  font-size: 1.5em; }
+
 .md-perspective {
   height: 100%;
   overflow: hidden; }
@@ -14647,7 +14661,7 @@ p {
   min-width: 320px;
   opacity: 0; }
   .md-content button {
-    margin: 20px;
+    margin: 20px 0;
     display: inline-flex;
     font-size: .8em; }
   .md-content .md-header {
@@ -14848,7 +14862,7 @@ p {
     transform: translateZ(0) translateX(0%) rotateY(0deg);
     opacity: 1; }
 
-.dd {
+.drop {
   position: relative;
   display: block;
   margin: 0;
@@ -14859,12 +14873,12 @@ p {
   line-height: 20px;
   float: left;
   width: 48%; }
-  .dd + .dd {
-    margin-left: 2%; }
-  .dd-menu {
+  .drop:nth-of-type(2) {
+    float: right; }
+  .drop-menu {
     padding: 0;
     margin: 20px; }
-  .dd-rows {
+  .drop-rows {
     display: block;
     clear: both;
     padding: 30px;
@@ -14872,7 +14886,7 @@ p {
     border: 0;
     border-top: 2px solid #ddd;
     border-bottom: 2px solid #ddd; }
-  .dd-output {
+  .drop-output {
     width: 100%;
     height: 7em;
     font-size: 1em;
@@ -14880,15 +14894,15 @@ p {
     font-family: Consolas, monospace;
     padding: 5px;
     box-sizing: border-box; }
-  .dd-list {
+  .drop-list {
     display: block;
     position: relative;
     margin: 0;
     padding: 0;
     list-style: none; }
-    .dd-list .dd-list {
+    .drop-list .drop-list {
       padding-left: 30px; }
-  .dd-handle {
+  .drop-handle {
     display: block;
     height: 30px;
     margin: 5px 0;
@@ -14901,17 +14915,17 @@ p {
     background: linear-gradient(#fafafa 0%, #eee 100%);
     border-radius: 3px;
     box-sizing: border-box; }
-    .dd-handle:hover {
+    .drop-handle:hover {
       color: #2ea8e5;
       background: #fff; }
-  .dd-placeholder {
+  .drop-placeholder {
     margin: 5px 0;
     padding: 0;
     min-height: 30px;
     background: #f2fbff;
     border: 1px dashed #b6bcbf;
     box-sizing: border-box; }
-  .dd-empty {
+  .drop-empty {
     margin: 5px 0;
     padding: 0;
     box-sizing: border-box;
@@ -14921,9 +14935,9 @@ p {
     background-image: linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff), linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff);
     background-size: 60px 60px;
     background-position: 0 0, 30px 30px; }
-  .dd-collapsed .dd-list {
+  .drop-collapsed .drop-list {
     display: none; }
-  .dd-item {
+  .drop-item {
     display: block;
     position: relative;
     margin: 0;
@@ -14931,7 +14945,7 @@ p {
     min-height: 20px;
     font-size: 13px;
     line-height: 20px; }
-    .dd-item > button {
+    .drop-item > button {
       display: block;
       position: relative;
       cursor: pointer;
@@ -14949,20 +14963,16 @@ p {
       line-height: 1;
       text-align: center;
       font-weight: 700; }
-      .dd-item > button:before {
+      .drop-item > button:before {
         content: '+';
         display: block;
         position: absolute;
         width: 100%;
         text-align: center;
         text-indent: 0; }
-      .dd-item > button[data-action='collapse']:before {
+      .drop-item > button[data-action='collapse']:before {
         content: '-'; }
-  .dd-dragel {
-    position: absolute;
-    pointer-events: none;
-    z-index: 9999; }
-  .dd--drag .dd-handle {
+  .drop--drag .drop-handle {
     position: absolute;
     margin: 0;
     left: 0;
@@ -14978,7 +14988,7 @@ p {
     background: linear-gradient(#ddd 0%, #bbb 100%);
     border-top-right-radius: 0;
     border-bottom-right-radius: 0; }
-    .dd--drag .dd-handle:before {
+    .drop--drag .drop-handle:before {
       content: '≡';
       display: block;
       position: absolute;
@@ -14990,9 +15000,9 @@ p {
       color: #fff;
       font-size: 20px;
       font-weight: 400; }
-    .dd--drag .dd-handle:hover {
+    .drop--drag .drop-handle:hover {
       background: #ddd; }
-  .dd--drag .dd-content {
+  .drop--drag .drop-content {
     display: block;
     height: 30px;
     margin: 5px 0;
@@ -15005,13 +15015,18 @@ p {
     background: linear-gradient(#fafafa 0%, #eee 100%);
     border-radius: 3px;
     box-sizing: border-box; }
-    .dd--drag .dd-content:hover {
+    .drop--drag .drop-content:hover {
       color: #2ea8e5;
       background: #fff; }
-  .dd.dd--black .dd-handle {
+  .drop.drop--black .drop-handle {
     color: #fff;
     border: 1px solid #999;
     background: #bbb;
     background: linear-gradient(#bbb 0%, #999 100%); }
+
+.dd-dragel {
+  position: absolute;
+  pointer-events: none;
+  z-index: 9999; }
 
 /*# sourceMappingURL=main.css.map */

@@ -162,56 +162,60 @@ var randomScalingFactor = function() {
 jQuery(document).ready(function ($) {
 
   $(window).on('load scroll resize', function () {
-      var headerHeight = $('.top-header').outerHeight();
-      $('.main').css({
-          "padding-top": headerHeight
-      });
+    var headerHeight = $('.top-header').outerHeight();
+    $('.main').css({
+      "padding-top": headerHeight
+    });
   });
   // Smooth
   jQuery(function ($) {
     $('a.anchor-link--smooth-scroll[href^="#"]').click(function (e) {
-        e.preventDefault();
-        var headerHeight = $('.top-header').outerHeight();
-        var speed = 400;
-        var href = jQuery(this).attr("href");
-        var target = jQuery(href == "#" || href == "" ? 'html' : href);
-        var position = target.offset().top - headerHeight;
-        $('body,html').animate({scrollTop: position}, speed, 'swing');
-        return false;
+      e.preventDefault();
+      var headerHeight = $('.top-header').outerHeight();
+      var speed = 400;
+      var href = jQuery(this).attr("href");
+      var target = jQuery(href == "#" || href == "" ? 'html' : href);
+      var position = target.offset().top - headerHeight;
+      $('body,html').animate({scrollTop: position}, speed, 'swing');
+      return false;
     });
-    
+
   });
   if ($('.back-to-top').length) {
     var scrollTrigger = 100, // px
-        backToTop = function () {
-            var scrollTop = $(window).scrollTop();
-            if (scrollTop > scrollTrigger) {
-                $('.back-to-top').show();
-            } else {
-                $('.back-to-top').hide();
-            }
-        };
+      backToTop = function () {
+        var scrollTop = $(window).scrollTop();
+        if (scrollTop > scrollTrigger) {
+          $('.back-to-top').show();
+        } else {
+          $('.back-to-top').hide();
+        }
+      };
+    backToTop();
+    $(window).on('scroll', function () {
       backToTop();
-      $(window).on('scroll', function () {
-          backToTop();
-      });
-      $('.back-to-top').on('click', function (e) {
-          e.preventDefault();
-          $('html,body').animate({
-              scrollTop: 0
-          }, 700);
-      });
+    });
+    $('.back-to-top').on('click', function (e) {
+      e.preventDefault();
+      $('html,body').animate({
+        scrollTop: 0
+      }, 700);
+    });
   }
   // Accordion
-  $('.js-accordion').on('click', function () {
-    var $this = $(this);
-    $this.next().slideToggle();
-    $this.toggleClass('is-clicked');
+  $('.js-accordion').on('click', function (e) {
+    e.preventDefault();
+    $(this).toggleClass('is-clicked');
+    if (!$(this).next().hasClass('is-displayed')) {
+      $(this).next().addClass('is-displayed').slideDown(250);
+    } else {
+      $(this).next().removeClass('is-displayed').slideUp(250);
+    }
   });
   //Charts
   $(window).on('load resize', function () {
     var hClass = $('.main').hasClass('charts');
-    if(hClass){
+    if (hClass) {
       //Charts-line
       var lineChart = document.getElementById('line-chart').getContext('2d');
       var lineChart = new Chart(lineChart, {
@@ -373,53 +377,40 @@ jQuery(document).ready(function ($) {
 
   // MOdal click
 
-  $('.md-trigger').on('click',function(){
+  $('.md-trigger').on('click', function () {
     var modal = $(this).data('modal');
     $("#" + modal).niftyModal();
   });
-  (function($) {
-    $(document).ready(function()
-    {
 
-      var updateOutput = function(e){
-        var list   = e.length ? e : $(e.target),
-          output = list.data('output');
-        if (window.JSON) {
-          output.val(window.JSON.stringify(list.nestable('serialize')));//, null, 2));
-        } else {
-          output.val('JSON browser support required for this demo.');
-        }
-      };
+  //drop and drag list item
+  var updateOutput = function (e) {
+    var list = e.length ? e : $(e.target),
+      output = list.data('output');
+    if (window.JSON) {
+      output.val(window.JSON.stringify(list.nestable('serialize')));//, null, 2));
+    } else {
+      output.val('JSON browser support required for this demo.');
+    }
+  };
 
-      // activate Nestable for list 1
-      $('#nestable').nestable({
-        group: 1
-      })
-        .on('change', updateOutput);
+  // activate Nestable for list 1
+  $('.drop').nestable({
+    group: 1
+  })
+    .on('change', updateOutput);
 
-      // activate Nestable for list 2
-      $('#nestable2').nestable({
-        group: 1
-      })
-        .on('change', updateOutput);
+  // output initial serialised data
+  updateOutput($('.drop').data('output', $('.drop-output')));
 
-      // output initial serialised data
-      updateOutput($('#nestable').data('output', $('#nestable-output')));
-      updateOutput($('#nestable2').data('output', $('#nestable2-output')));
+  $('.dd-menu').on('click', function (e) {
+    var target = $(e.target),
+      action = target.data('action');
+    if (action === 'expand-all') {
+      $('.drop').nestable('expandAll');
+    }
+    if (action === 'collapse-all') {
+      $('.drop').nestable('collapseAll');
+    }
+  });
 
-      $('#nestable-menu').on('click', function(e){
-        var target = $(e.target),
-          action = target.data('action');
-        if (action === 'expand-all') {
-          $('.dd').nestable('expandAll');
-        }
-        if (action === 'collapse-all') {
-          $('.dd').nestable('collapseAll');
-        }
-      });
-
-      $('#nestable3').nestable();
-
-    });
-  })(jQuery);
 });

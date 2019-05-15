@@ -214,6 +214,7 @@ jQuery(document).ready(function ($) {
   });
   //Charts
   $(window).on('load resize', function () {
+    //Chart list item
     var hClass = $('.main').hasClass('charts');
     if (hClass) {
       //Charts-line
@@ -373,44 +374,160 @@ jQuery(document).ready(function ($) {
         }
       });
     }
-  });
+    ;
+    //drop and drag list item
+    var ddrag = $('.main').hasClass('drop-drag');
+    if (ddrag) {
+      var updateOutput = function (e) {
+        var list = e.length ? e : $(e.target),
+          output = list.data('output');
+        if (window.JSON) {
+          output.val(window.JSON.stringify(list.nestable('serialize')));//, null, 2));
+        } else {
+          output.val('JSON browser support required for this demo.');
+        }
+      };
 
+      // activate Nestable for list 1
+      $('.drop').nestable({
+        group: 1
+      })
+        .on('change', updateOutput);
+
+      // output initial serialised data
+      updateOutput($('.drop').data('output', $('.drop-output')));
+
+      $('.dd-menu').on('click', function (e) {
+        var target = $(e.target),
+          action = target.data('action');
+        if (action === 'expand-all') {
+          $('.drop').nestable('expandAll');
+        }
+        if (action === 'collapse-all') {
+          $('.drop').nestable('collapseAll');
+        }
+      });
+    }
+    var pforms = $('.main').hasClass('page-forms');
+    if (pforms) {
+      // Requied form
+
+      $('.option').on('change', function () {
+        var $radio = $(this),
+          $currOptGroup = $($radio.data('target')),
+          $optGroups = $('.option-group');
+
+        $optGroups.addClass('hidden');
+        $currOptGroup.removeClass('hidden');
+      });
+
+      // Validation
+      var parsleyInstance = $('form').parsley();
+
+      parsleyInstance.options.successClass = 'test';
+      parsleyInstance.options.errorsContainer = function (ParsleyField) {
+        var $topParent = ParsleyField.$element.parentsUntil('form')[ParsleyField.$element.parentsUntil('form').length - 1];
+        console.log($topParent)
+        return $topParent;
+      };
+
+      parsleyInstance.options.errorsWrapper = '<div class="test"></div>';
+      parsleyInstance.options.errorTemplate = '<span></span>';
+
+      console.log(parsleyInstance.options.errorTemplate);
+
+      window.ParsleyValidator
+        .addValidator(
+          'dobrequired',
+          function (value, requirements) {
+            var day = $(requirements[0]).val(),
+              month = $(requirements[1]).val(),
+              year = $(requirements[2]).val(),
+              $dobDayInstance = $(requirements[0]).parsley(),
+              errorMsg = 'Date is required';
+            window.ParsleyUI.removeError($dobDayInstance, 'dobrequired');
+            window.ParsleyUI.removeError($dobDayInstance, 'date');
+            window.ParsleyUI.removeError($dobDayInstance, 'age');
+
+            if (day.length && month.length && year.length) {
+              window.ParsleyUI.removeError($dobDayInstance, 'dobrequired');
+
+              return true;
+            } else {
+              window.ParsleyUI.addError($dobDayInstance, 'dobrequired', errorMsg);
+              return false;
+            }
+
+          },
+          34
+        )
+        .addValidator(
+          'date',
+          function (value, requirements) {
+            var day = $(requirements[0]).val(),
+              month = $(requirements[1]).val(),
+              year = $(requirements[2]).val(),
+              mydate = new Date(),
+              $dobDayInstance = $(requirements[0]).parsley(),
+              errorMsg = 'Enter a valid date';
+            window.ParsleyUI.removeError($dobDayInstance, 'date');
+            window.ParsleyUI.removeError($dobDayInstance, 'age');
+
+            mydate.setFullYear(year, month - 1, day);
+
+            if ((mydate.getDate() == day) && (mydate.getMonth() == (month - 1)) && (mydate.getFullYear() == year)) {
+              window.ParsleyUI.removeError($dobDayInstance, 'date');
+
+              return true;
+            } else {
+              window.ParsleyUI.addError($dobDayInstance, 'date', errorMsg);
+
+              return false;
+            }
+          },
+
+          // priority
+          33
+        )
+        .addValidator(
+          'age',
+          function (value, requirements) {
+            var day = $(requirements[0]).val(),
+              month = $(requirements[1]).val(),
+              year = $(requirements[2]).val(),
+              mydate = new Date(),
+              currdate = new Date(),
+              age = 18,
+              $dobDayInstance = $(requirements[0]).parsley(),
+              errorMsg = 'You must be over 18 to proceed';
+            window.ParsleyUI.removeError($dobDayInstance, 'age');
+
+            mydate.setFullYear(year, month - 1, day);
+            currdate.setFullYear(currdate.getFullYear() - age);
+
+            if (currdate >= mydate) {
+
+              window.ParsleyUI.removeError($dobDayInstance, 'age');
+
+              return true;
+            } else {
+              window.ParsleyUI.addError($dobDayInstance, 'age', errorMsg);
+
+              return false;
+            }
+          },
+
+          32
+        );
+
+
+    }
+  });
   // MOdal click
 
   $('.md-trigger').on('click', function () {
     var modal = $(this).data('modal');
     $("#" + modal).niftyModal();
-  });
-
-  //drop and drag list item
-  var updateOutput = function (e) {
-    var list = e.length ? e : $(e.target),
-      output = list.data('output');
-    if (window.JSON) {
-      output.val(window.JSON.stringify(list.nestable('serialize')));//, null, 2));
-    } else {
-      output.val('JSON browser support required for this demo.');
-    }
-  };
-
-  // activate Nestable for list 1
-  $('.drop').nestable({
-    group: 1
-  })
-    .on('change', updateOutput);
-
-  // output initial serialised data
-  updateOutput($('.drop').data('output', $('.drop-output')));
-
-  $('.dd-menu').on('click', function (e) {
-    var target = $(e.target),
-      action = target.data('action');
-    if (action === 'expand-all') {
-      $('.drop').nestable('expandAll');
-    }
-    if (action === 'collapse-all') {
-      $('.drop').nestable('collapseAll');
-    }
   });
 
 });

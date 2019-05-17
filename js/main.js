@@ -424,18 +424,6 @@ jQuery(document).ready(function ($) {
       // Validation
       var parsleyInstance = $('form').parsley();
 
-      parsleyInstance.options.successClass = 'test';
-      parsleyInstance.options.errorsContainer = function (ParsleyField) {
-        var $topParent = ParsleyField.$element.parentsUntil('form')[ParsleyField.$element.parentsUntil('form').length - 1];
-        console.log($topParent)
-        return $topParent;
-      };
-
-      parsleyInstance.options.errorsWrapper = '<div class="test"></div>';
-      parsleyInstance.options.errorTemplate = '<span></span>';
-
-      console.log(parsleyInstance.options.errorTemplate);
-
       window.ParsleyValidator
         .addValidator(
           'dobrequired',

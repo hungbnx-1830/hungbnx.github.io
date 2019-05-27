@@ -10,12 +10,10 @@
     <link rel="stylesheet" type="text/css" href="css/main.css" />
   </head>
   <body>
-    <header class="header">
-      <nav class="navbar navbar-expand fixed-top top-header">
-        <div class="container">
-          <div class="page-title"><a href="links.html">Template</a></div>
-        </div>
-      </nav>
+    <header class="fixed-top header">
+      <div class="container">
+        <div class="page-title"><a href="links.html">Template</a></div>
+      </div>
     </header>
     <div class="main drop-drag">
       <div class="wrapper">
@@ -127,12 +125,12 @@
           </ol>
           <div class="main-content container-fluid">
             <div class="row">
-              <menu class="dd-menu" id="nestable-menu">
-                <button type="button" data-action="expand-all">Expand All</button>
-                <button type="button" data-action="collapse-all">Collapse All</button>
+              <menu class="dd-menu js-drop-menu" id="nestable-menu">
+                <button class="btn btn--space btn--primary" type="button" data-action="expand-all">Expand All</button>
+                <button class="btn btn--space btn--secondary" type="button" data-action="collapse-all">Collapse All</button>
               </menu>
               <div class="cf dd-rows drop-rows">
-                <div class="dd drop" id="nestable">
+                <div class="dd drop js-drop" id="nestable">
                   <ol class="dd-list drop-list">
                     <li class="dd-item drop-item" data-id="1">
                       <div class="dd-handle drop-handle">Item 1</div>
@@ -176,7 +174,7 @@
                     </li>
                   </ol>
                 </div>
-                <div class="dd drop drop--black" id="nestable2">
+                <div class="dd drop drop--black js-drop" id="nestable2">
                   <ol class="dd-list drop-list">
                     <li class="dd-item drop-item" data-id="13">
                       <div class="dd-handle drop-handle">Item 13</div>
@@ -203,11 +201,11 @@
               </div>
               <div class="cf dd-rows drop-rows">
                 <p><strong>Serialised Output (per list)</strong></p>
-                <textarea class="dd-output drop-output" id="nestable-output"></textarea>
+                <textarea class="dd-output drop-output js-drop-output" id="nestable-output"></textarea>
                 <p>&nbsp;</p>
                 <p><strong>Draggable Handles</strong></p>
                 <p>If you&apos;re clever with your CSS and markup this can be achieved without any JavaScript changes.</p>
-                <div class="dd drop drop--drag" id="nestable3">
+                <div class="dd drop drop--drag js-drop" id="nestable3">
                   <ol class="dd-list drop-list">
                     <li class="dd-item drop-item dd-item drop-item" data-id="13">
                       <div class="dd-handle drop-handle">Drag</div>
@@ -242,12 +240,12 @@
           </div>
         </div>
       </div>
-    </div><a class="back-to-top anchor-link--smooth-scroll" href="#"></a>
+    </div><a class="back-to-top anchor-link--smooth-scroll" href="#" data-duration="500" data-offset="100"></a>
   </body>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script type="text/javascript" src="js/Charts/Chart.min.js"></script>
   <script type="text/javascript" src="js/jquery.niftymodals.js"></script>
   <script type="text/javascript" src="js/jquery.nestable.js"></script>
-  <script type="text/javascript" src="js/parsley.min.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
+  <script type="text/javascript" src="js/dashboard.js"></script>
 </html>

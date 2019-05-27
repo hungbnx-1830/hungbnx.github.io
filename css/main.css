@@ -13929,23 +13929,22 @@ p {
   text-transform: uppercase;
   margin-bottom: 10px; }
 
-.top-header {
+.header {
   background-color: #fff;
   border: 0;
   margin-bottom: 0;
   border-bottom: 1px solid #e6e6e6;
   padding: 0;
   z-index: 99; }
-  .top-header .page-title {
+  .header .page-title {
     flex: 1 1 auto;
     color: #5481e6;
     overflow: hidden;
     font-size: 30px;
     line-height: 60px;
-    float: left;
     text-align: center;
     text-transform: uppercase; }
-    .top-header .page-title a:hover {
+    .header .page-title a:hover {
       text-decoration: none; }
 
 .back-to-top {
@@ -15031,38 +15030,5 @@ p {
   position: absolute;
   pointer-events: none;
   z-index: 9999; }
-
-.hidden {
-  display: none; }
-
-.parsley-success {
-  color: #468847;
-  background-color: #fff;
-  border: 1px solid #5481e6; }
-
-.parsley-error {
-  color: #d64146;
-  background-color: #fff;
-  border: 1px solid #f76d3c; }
-
-.parsley-required {
-  color: #d64146; }
-
-.parsley-errors-list {
-  margin: 2px 0 3px;
-  padding: 0;
-  list-style-type: none;
-  font-size: .9em;
-  line-height: .9em;
-  opacity: 0;
-  transition: all .3s ease-in; }
-  .parsley-errors-list.filled {
-    opacity: 1; }
-
-.custom-control-label:before {
-  top: 0; }
-
-.custom-control-label:after {
-  top: 0; }
 
 /*# sourceMappingURL=main.css.map */

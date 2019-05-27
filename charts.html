@@ -10,12 +10,10 @@
     <link rel="stylesheet" type="text/css" href="css/main.css" />
   </head>
   <body>
-    <header class="header">
-      <nav class="navbar navbar-expand fixed-top top-header">
-        <div class="container">
-          <div class="page-title"><a href="links.html">Template</a></div>
-        </div>
-      </nav>
+    <header class="fixed-top header">
+      <div class="container">
+        <div class="page-title"><a href="links.html">Template</a></div>
+      </div>
     </header>
     <div class="main charts">
       <div class="wrapper">
@@ -133,7 +131,17 @@
                     <div class="tools"><span class="tools__icon tools__icon--sm"><i class="icon fas fa-chevron-down"></i></span><span class="tools__icon tools__icon--sm"><i class="icon fas fa-sync"></i></span><span class="tools__icon tools__icon--sm"><i class="icon fas fa-times"></i></span></div><span class="card__title">Line Chart</span><span class="card__subtitle">This is a line chart created with Chart.js</span>
                   </div>
                   <div class="card__body">
-                    <canvas id="line-chart"></canvas>
+                    <canvas class="line-chart js-chart"></canvas>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="card">
+                  <div class="card__header">
+                    <div class="tools"><span class="tools__icon tools__icon--sm"><i class="icon fas fa-chevron-down"></i></span><span class="tools__icon tools__icon--sm"><i class="icon fas fa-sync"></i></span><span class="tools__icon tools__icon--sm"><i class="icon fas fa-times"></i></span></div><span class="card__title">Line Chart</span><span class="card__subtitle">This is a line chart created with Chart.js</span>
+                  </div>
+                  <div class="card__body">
+                    <canvas class="line-chart--02 js-chart"></canvas>
                   </div>
                 </div>
               </div>
@@ -143,29 +151,17 @@
                     <div class="tools"><span class="tools__icon tools__icon--sm"><i class="icon fas fa-chevron-down"></i></span><span class="tools__icon tools__icon--sm"><i class="icon fas fa-sync"></i></span><span class="tools__icon tools__icon--sm"><i class="icon fas fa-times"></i></span></div><span class="card__title">Bar Chart</span><span class="card__subtitle">This is a bar chart created with Chart.js</span>
                   </div>
                   <div class="card__body">
-                    <canvas id="bar-chart"></canvas>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-lg-6">
-                <div class="card">
-                  <div class="card__header">
-                    <div class="tools"><span class="tools__icon tools__icon--sm"><i class="icon fas fa-chevron-down"></i></span><span class="tools__icon tools__icon--sm"><i class="icon fas fa-sync"></i></span><span class="tools__icon tools__icon--sm"><i class="icon fas fa-times"></i></span></div><span class="card__title">Radar Chart</span><span class="card__subtitle">This is a radar chart created with Chart.js</span>
-                  </div>
-                  <div class="card__body">
-                    <canvas id="radar-chart" height="200"></canvas>
+                    <canvas class="bar-chart js-chart"></canvas>
                   </div>
                 </div>
               </div>
               <div class="col-lg-6">
                 <div class="card">
                   <div class="card__header">
-                    <div class="tools"><span class="tools__icon tools__icon--sm"><i class="icon fas fa-chevron-down"></i></span><span class="tools__icon tools__icon--sm"><i class="icon fas fa-sync"></i></span><span class="tools__icon tools__icon--sm"><i class="icon fas fa-times"></i></span></div><span class="card__title">Polar Chart</span><span class="card__subtitle">This is a polar area chart created with Chart.js</span>
+                    <div class="tools"><span class="tools__icon tools__icon--sm"><i class="icon fas fa-chevron-down"></i></span><span class="tools__icon tools__icon--sm"><i class="icon fas fa-sync"></i></span><span class="tools__icon tools__icon--sm"><i class="icon fas fa-times"></i></span></div><span class="card__title">Bar Chart</span><span class="card__subtitle">This is a bar chart created with Chart.js</span>
                   </div>
                   <div class="card__body">
-                    <canvas id="polar-chart" height="200"></canvas>
+                    <canvas class="bar-chart--02 js-chart"></canvas>
                   </div>
                 </div>
               </div>
@@ -177,7 +173,17 @@
                     <div class="tools"><span class="tools__icon tools__icon--sm"><i class="icon fas fa-chevron-down"></i></span><span class="tools__icon tools__icon--sm"><i class="icon fas fa-sync"></i></span><span class="tools__icon tools__icon--sm"><i class="icon fas fa-times"></i></span></div><span class="card__title">Pie Chart</span><span class="card__subtitle">This is a pie chart created with Chart.js</span>
                   </div>
                   <div class="card__body">
-                    <canvas id="pie-chart" height="180"></canvas>
+                    <canvas class="pie-chart js-chart"></canvas>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="card">
+                  <div class="card__header">
+                    <div class="tools"><span class="tools__icon tools__icon--sm"><i class="icon fas fa-chevron-down"></i></span><span class="tools__icon tools__icon--sm"><i class="icon fas fa-sync"></i></span><span class="tools__icon tools__icon--sm"><i class="icon fas fa-times"></i></span></div><span class="card__title">Pie Chart</span><span class="card__subtitle">This is a pie chart created with Chart.js</span>
+                  </div>
+                  <div class="card__body">
+                    <canvas class="pie-chart--02 js-chart"></canvas>
                   </div>
                 </div>
               </div>
@@ -187,7 +193,17 @@
                     <div class="tools"><span class="tools__icon tools__icon--sm"><i class="icon fas fa-chevron-down"></i></span><span class="tools__icon tools__icon--sm"><i class="icon fas fa-sync"></i></span><span class="tools__icon tools__icon--sm"><i class="icon fas fa-times"></i></span></div><span class="card__title">Doughnut Chart</span><span class="card__subtitle">This is a oughnut area chart created with Chart.js</span>
                   </div>
                   <div class="card__body">
-                    <canvas id="donut-chart" height="180"></canvas>
+                    <canvas class="donut-chart js-chart"></canvas>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="card">
+                  <div class="card__header">
+                    <div class="tools"><span class="tools__icon tools__icon--sm"><i class="icon fas fa-chevron-down"></i></span><span class="tools__icon tools__icon--sm"><i class="icon fas fa-sync"></i></span><span class="tools__icon tools__icon--sm"><i class="icon fas fa-times"></i></span></div><span class="card__title">Doughnut Chart</span><span class="card__subtitle">This is a oughnut area chart created with Chart.js</span>
+                  </div>
+                  <div class="card__body">
+                    <canvas class="donut-chart--02 js-chart"></canvas>
                   </div>
                 </div>
               </div>
@@ -195,12 +211,12 @@
           </div>
         </div>
       </div>
-    </div><a class="back-to-top anchor-link--smooth-scroll" href="#"></a>
+    </div><a class="back-to-top anchor-link--smooth-scroll" href="#" data-duration="500" data-offset="100"></a>
   </body>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script type="text/javascript" src="js/Charts/Chart.min.js"></script>
   <script type="text/javascript" src="js/jquery.niftymodals.js"></script>
   <script type="text/javascript" src="js/jquery.nestable.js"></script>
-  <script type="text/javascript" src="js/parsley.min.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
+  <script type="text/javascript" src="js/dashboard.js"></script>
 </html>

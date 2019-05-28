@@ -14452,6 +14452,12 @@ p {
     display: block;
     font-size: 12px;
     color: #707070; }
+  .card-table .card__header {
+    border-bottom: none;
+    margin: 0;
+    padding: 1rem 1.538rem; }
+  .card-table .card__body {
+    padding: 0; }
 
 .flex-start {
   display: flex;
@@ -15030,5 +15036,72 @@ p {
   position: absolute;
   pointer-events: none;
   z-index: 9999; }
+
+.user-avatar img {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  margin-right: 10px; }
+
+.table .number {
+  text-align: right; }
+
+.table .cell-detail-description {
+  display: block;
+  font-size: .8462rem;
+  color: #999; }
+
+.table .progress {
+  height: 6px;
+  background-color: #e6e6e6;
+  margin-bottom: 0; }
+  .table .progress-bar {
+    border-radius: 2px; }
+    .table .progress-bar--primary {
+      background-color: #4285f4; }
+
+.dataTables_length label {
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center; }
+
+.dataTables_length select {
+  margin: 0 10px; }
+
+.dataTable th {
+  position: relative; }
+  .dataTable th:before, .dataTable th:after {
+    content: '';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    position: absolute;
+    bottom: .9em;
+    display: block;
+    opacity: .3; }
+  .dataTable th:before {
+    content: '\f30c';
+    right: 1em; }
+  .dataTable th:after {
+    content: '\f309';
+    right: .5em; }
+
+.dataTable .sorting_asc:before {
+  opacity: 1; }
+
+.dataTable .sorting_desc:after {
+  opacity: 1; }
+
+.dataTables_filter label {
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center; }
+
+.dataTables_filter input {
+  margin: 0 10px; }
 
 /*# sourceMappingURL=main.css.map */

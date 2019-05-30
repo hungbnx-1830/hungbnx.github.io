@@ -252,10 +252,15 @@ const tranningProject = {
   },
   jsDataTable: function () {
     // tables
-    $('#table1').DataTable({
-      autoFill: true,
-      responsive: true
-    });
+    if ($('.js-tables').length > 0) {
+      var table = $('.js-tables').DataTable( {
+        responsive: true
+      } );
+
+      new $.fn.dataTable.FixedHeader( table );
+
+    }
+
 
   },
 }

@@ -14458,6 +14458,9 @@ p {
     padding: 1rem 1.538rem; }
   .card--table .card__body {
     padding: 0; }
+  .card--no-border {
+    border: 0;
+    box-shadow: none; }
 
 .flex-start {
   display: flex;
